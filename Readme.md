@@ -2,7 +2,11 @@
 
 In this project, we will deploy a sentiment analyser model using fastapi on AWS lambda using continuous delivery and publishing this container to a container registry that anyone can consume.
 
-Following all best practices such as containerizing different components of projects, writing tests and testing individual modules, github actions for registring and publishing to github container registry.
+- Containerizing different components of projects
+- Writing tests and testing individual modules
+- Using [trunk](https://docs.trunk.io/) for automatic code checking, formatting and liniting
+- Adding a Github actions for registring and publishing containzerized fastapi app to github container registry
+- Deploying fastapi app as a lambda function on AWS
 
 ## Run
 
@@ -15,9 +19,7 @@ cd sentiment
 docker build -t sentiment .
 cd ..
 docker run --rm -it -v $(pwd):/app sentiment bash
-cd sentiment
-python3 model.py
-cd ..
+python3 sentiment/model.py
 pytest --cov test/test_sentiment_model.py
 ```
 
