@@ -1,19 +1,19 @@
-from fastapi.testclient import TestClient
 from http import HTTPStatus
 
-from app import app
+from fastapi.testclient import TestClient
 
+from app import app
 
 client = TestClient(app)
 
 
 def test_root():
-    response = client.get('/')
+    response = client.get("/")
     assert response.status_code == HTTPStatus.OK
 
 
 def test_healthcheck_endpoint():
-    response = client.get('/healthcheck')
+    response = client.get("/healthcheck")
     assert response.status_code == HTTPStatus.OK
 
 

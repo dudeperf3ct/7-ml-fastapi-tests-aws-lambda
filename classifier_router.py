@@ -1,6 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 from starlette.responses import JSONResponse
-from fastapi import Query
 
 from sentiment.model import SentimentBertModel
 
@@ -9,6 +8,6 @@ router = APIRouter()
 
 @router.post("/classify")
 async def predict(input_text: str = Query(..., min_length=2)):
-    classifier = SentimentBertModel('distilbert-base-uncased-finetuned-sst-2-english')
+    classifier = SentimentBertModel("distilbert-base-uncased-finetuned-sst-2-english")
     out_dict = classifier.predict(input_text)
     return JSONResponse(out_dict)
