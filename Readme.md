@@ -23,6 +23,8 @@ pytest --cov test/test_sentiment_model.py
 
 - Fastapi
 
+> Note: To run `pytest` replace `requirements.txt` with `requirements-dev.txt` in `Dockerfile`
+
 ```bash
 docker build -t sentiment .
 docker run --rm -it -v $(pwd):/app -p 8000:8000 sentiment bash
