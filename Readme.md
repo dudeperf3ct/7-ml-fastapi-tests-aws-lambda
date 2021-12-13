@@ -36,8 +36,19 @@ pytest --cov test/test_fastapi.py
 
 - AWS Lamda and SAM
 
+[Prerequisties](https://vinaykachare.medium.com/serverless-api-with-aws-sam-fastapi-3f4d9510d6b6):
+
+- Install and configure aws cli
+- Install sam cli
+
 Once the github actions runs successfully, our lambda function is packaged and published on Github Container Registry. To build your serverless application use `sam build` with option of [Building a .zip file archive](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build.html) using container image from Github Container Registry.
 
 ```bash
 sam build --use-container --build-image ghcr.io/dudeperf3ct/fastapi-distilbert:latest
+sam deploy --guided
 ```
+
+- Exercises  
+
+1. Another approach would be to write a github action to publish the package at AWS ECR and the deploy by following steps above.
+2. Yet another approach would be to directly build a SAM application using `Dockerfile` only.

@@ -1,5 +1,10 @@
+Transform: 'AWS::Serverless-2016-10-31'
+
+Description: >
+    FastAPI with aws sam
+
 Resources:
-  HelloWorldFunction:
+  FastapiLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
       PackageType: Image
