@@ -1,13 +1,7 @@
-FROM python:3.8-slim-buster
+FROM public.ecr.aws/lambda/python:3.8
 
-WORKDIR /app
+COPY . ./
 
-COPY requirements.txt /app/requirements.txt
+RUN pip3 install -r requirements-aws.txt
 
-RUN pip3 install -r requirements.txt
-
-COPY . .
-
-EXPOSE 8000
-
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8000", "app:app"]
+CMD [ "app.handler"]

@@ -1,10 +1,12 @@
 from fastapi import FastAPI
+from mangum import Mangum
 
 import classifier_router
 
 app = FastAPI()
 app.include_router(classifier_router.router)
 
+handler = Mangum(app)
 
 @app.get("/")
 async def root():
