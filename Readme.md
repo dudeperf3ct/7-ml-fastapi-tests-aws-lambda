@@ -45,6 +45,7 @@ Once the github actions runs successfully, our lambda function is packaged and p
 
 ```bash
 sam build --use-container --build-image ghcr.io/dudeperf3ct/fastapi-distilbert:latest
+sam local invoke # test locally before deploying
 sam deploy --guided
 ```
 
