@@ -25,21 +25,18 @@ pytest --cov test/test_sentiment_model.py
 
 - Fastapi
 
-> Note: To run `pytest` replace `requirements.txt` with `requirements-dev.txt` in `Dockerfile` and uncomment line number 2 and 9 in `app.py`
+> Note: To run `pytest` replace `requirements-fastapi.txt` with `requirements-dev.txt` in `Dockerfile`
 
 ```bash
 docker build -t sentiment -f Dockerfile.fastapi .
 docker run --rm -it -v $(pwd):/app -p 8000:8000 sentiment bash
-uvicorn app:app --host=0.0.0.0
+uvicorn main:app --host=0.0.0.0
 pytest --cov test/test_fastapi.py
 ```
 
 - AWS Lamda and SAM
 
-[Prerequisties](https://vinaykachare.medium.com/serverless-api-with-aws-sam-fastapi-3f4d9510d6b6):
-
-- Install and configure aws cli
-- Install sam cli
+Prerequisties: Install and configure aws cli, Install sam cli. [Guide](https://vinaykachare.medium.com/serverless-api-with-aws-sam-fastapi-3f4d9510d6b6)
 
 Once the github actions runs successfully, our lambda function is packaged and published on Github Container Registry. To build your serverless application use `sam build` with option of [Building a .zip file archive](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build.html) using container image from Github Container Registry.
 
@@ -49,7 +46,8 @@ sam local invoke # test locally before deploying
 sam deploy --guided
 ```
 
-- Exercises  
+- Exercises
 
 1. Another approach would be to write a github action to publish the package at AWS ECR and the deploy by following steps above.
-2. Yet another approach would be to directly build a SAM application using `Dockerfile` only.
+2. Yet another approach would be to directly build a SAM application using `Dockerfile` only whtithout registring any containers.
+3. A different approach would be just using python files that would require changing `template.yaml` file accordingly.

@@ -1,14 +1,9 @@
 from fastapi import FastAPI
-from mangum import Mangum
 
 import classifier_router
 
 app = FastAPI()
 app.include_router(classifier_router.router)
-
-
-handler = Mangum(app)
-
 
 @app.get("/")
 async def root():
@@ -18,4 +13,3 @@ async def root():
 @app.get("/healthcheck", status_code=200)
 async def healthcheck():
     return "dummy check! Classifier is all ready to go!"
-

@@ -5,3 +5,4 @@ starlette
 torch==1.8.2+cpu
 transformers==4.13.0
 loguru==0.5.3
+mangum==0.12.3
