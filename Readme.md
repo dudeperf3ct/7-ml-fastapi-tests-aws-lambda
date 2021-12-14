@@ -34,7 +34,7 @@ uvicorn main:app --host=0.0.0.0
 pytest --cov test/test_fastapi.py
 ```
 
-- AWS Lamda and SAM
+- AWS Lamda and SAM [Not working yet!]
 
 Prerequisties: Install and configure aws cli, Install sam cli. [Guide](https://vinaykachare.medium.com/serverless-api-with-aws-sam-fastapi-3f4d9510d6b6)
 
@@ -42,8 +42,8 @@ Once the github actions runs successfully, our lambda function is packaged and p
 
 ```bash
 sam build --use-container --build-image ghcr.io/dudeperf3ct/fastapi-distilbert:latest
-sam local invoke # test locally before deploying
-sam deploy --guided
+sam local invoke  # test locally before deploying
+sam deploy --guided # deploy
 ```
 
 - Exercises
