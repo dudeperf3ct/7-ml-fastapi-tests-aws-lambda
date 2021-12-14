@@ -20,7 +20,7 @@ docker build -t sentiment -f Dockerfile.t .
 cd ..
 docker run --rm -it -v $(pwd):/app sentiment bash
 python3 sentiment/model.py
-pytest --cov test/test_sentiment_model.py
+pytest --cov tests/test_sentiment_model.py
 ```
 
 - Fastapi
@@ -31,7 +31,7 @@ pytest --cov test/test_sentiment_model.py
 docker build -t sentiment -f Dockerfile.fastapi .
 docker run --rm -it -v $(pwd):/app -p 8000:8000 sentiment bash
 uvicorn main:app --host=0.0.0.0
-pytest --cov test/test_fastapi.py
+pytest --cov tests/test_fastapi.py
 ```
 
 - AWS Lamda and SAM [Not working yet!]
