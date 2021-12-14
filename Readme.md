@@ -20,7 +20,7 @@ docker build -t sentiment -f Dockerfile.t .
 cd ..
 docker run --rm -it -v $(pwd):/app sentiment bash
 python3 sentiment/model.py
-pytest --cov tests/test_sentiment_model.py
+pytest tests/test_sentiment_model.py
 ```
 
 - Fastapi
